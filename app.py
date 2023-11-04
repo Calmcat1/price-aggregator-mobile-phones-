@@ -44,7 +44,27 @@ async def get_apple_phone_prices():
 
 @app.get('/phoneprices/v1/samsung')
 async def get_samsung_phone_prices():
-  pass
+  # will hold the keys we get from the json data where 'samsung' is present in the dictionary
+  samsung_phone_keys = []
+
+  #appends the values from the samsung_phone_keys via a loop to get the prices
+  value_samsung_holder = []
+  
+  # gets the names of the keys(dictionary keys that have the string samsung present in it)
+  for data_items in data:
+    if 'sung' in data_items:
+      samsung_phone_keys.append(data_items)
+  
+  # loops through the samsung_phone_keys to give us an individual samsung_key
+  for samsung_key in samsung_phone_keys:
+    value_samsung_holder.append(data[samsung_key])
+  
+  # makes a json data type by looping through th samsung_phone_keys and looping through the value_samsung_holder
+  # in the format samsung_phone_name(from samsung_phone_keys): samsung_phone_value(from value samsung holder)
+  dict_samsung = {samsung_phone_name: samsung_phone_value for samsung_phone_name, samsung_phone_value in zip(samsung_phone_keys,value_samsung_holder)}
+
+  # gives us the json data containing only samsung phones and their prices
+  return dict_samsung
 
 @app.get('/phoneprices/v1/techno')
 async def get_techno_phone_prices():
