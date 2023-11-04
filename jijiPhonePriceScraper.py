@@ -42,6 +42,8 @@ valuePairs = {names: prices for names, prices in zip(all_names, all_prices)}
 with open('data.json', 'w') as json_file:
   json_file.write(json.dumps(valuePairs, indent=4))
 
+
+# displays data, visualizes the data
 print(valuePairs)
 
 
