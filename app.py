@@ -6,5 +6,6 @@ app = FastAPI()
 
 @app.get('/phoneprices/v1')
 async def get_phone_prices():
-  data = json.load('data.json')
+  json_file = open('data.json', 'r')
+  data = json.load(json_file)
   return data
