@@ -14,7 +14,7 @@ all_prices = []
 all_names = []
 
 #for loop here used for pagination scraping using the page parameter
-for i in range(1,20):
+for i in range(1,170):
   params = {
     'page' : i
   }

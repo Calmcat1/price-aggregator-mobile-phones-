@@ -4,7 +4,7 @@ import json
 # in construction to make an API endpoint for use with the scraped data
 app = FastAPI()
 
-json_file = open('data.json', 'r')
+json_file = open('../data.json', 'r')
 data = json.load(json_file)
 
 #shows all phone prices
@@ -46,8 +46,6 @@ async def get_apple_phone_prices():
 async def get_samsung_phone_prices():
  
   samsung_phone_keys = []
-
- 
   value_samsung_holder = []
   
  
@@ -64,13 +62,44 @@ async def get_samsung_phone_prices():
 
   return dict_samsung
 
-@app.get('/phoneprices/v1/techno')
+# for Tecno, comments similar to the apple one above, just replace apple with Tecno :>
+@app.get('/phoneprices/v1/Tecno')
 async def get_techno_phone_prices():
-  pass
+    Tecno_phone_keys = []
+    value_Tecno_holder = []
+    
+   
+    for data_items in data:
+      if 'Tecno' in data_items:
+        Tecno_phone_keys.append(data_items)
+    
+   
+    for Tecno_key in Tecno_phone_keys:
+      value_Tecno_holder.append(data[Tecno_key])
+   
+    dict_Tecno = {Tecno_phone_name: Tecno_phone_value for Tecno_phone_name, Tecno_phone_value in zip(Tecno_phone_keys,value_Tecno_holder)}
+
+  
+    return dict_Tecno
 
 
-@app.get('/phoneprices/v1/oppo')
+# for Oppo, comments similar to the apple one above, just replace apple with Oppo :>
+@app.get('/phoneprices/v1/Oppo')
 async def get_oppo_phone_prices():
-  pass
+  Oppo_phone_keys = []
+  value_Oppo_holder = []
+  
+ 
+  for data_items in data:
+    if 'Oppo' in data_items:
+      Oppo_phone_keys.append(data_items)
+  
+ 
+  for Oppo_key in Oppo_phone_keys:
+    value_Oppo_holder.append(data[Oppo_key])
+ 
+  dict_Oppo = {Oppo_phone_name: Oppo_phone_value for Oppo_phone_name,Oppo_phone_value in zip(Oppo_phone_keys,value_Oppo_holder)}
+
+  return dict_Oppo
 
 
