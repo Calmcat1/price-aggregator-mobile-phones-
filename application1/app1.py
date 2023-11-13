@@ -4,7 +4,7 @@ import json
 # in construction to make an API endpoint for use with the scraped data
 app = FastAPI()
 
-json_file = open('data_test.json', 'r')
+json_file = open('/data/data.json', 'r')
 data = json.load(json_file)
 
 #shows all phone prices
