@@ -1,8 +1,18 @@
 from fastapi import FastAPI
 import json
+from fastapi.middleware.cors import CORSMiddleware
+
 
 # in construction to make an API endpoint for use with the scraped data
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 json_file = open('data/data.json', 'r')
 data = json.load(json_file)
